@@ -19,7 +19,7 @@ yum install policycoreutils policycoreutils-python selinux-policy selinux-policy
 
 # Install SELinux packages for creating custom
 # SELinux module
-yum install policycoreutils-devel selinux-policy-devel policycoreutils-newrole
+yum install policycoreutils-devel selinux-policy-devel policycoreutils-newrole -y
 
 # Creating test users
 echo "Creating users"
