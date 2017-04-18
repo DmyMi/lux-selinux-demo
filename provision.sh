@@ -4,7 +4,7 @@
 yum update -y
 
 # install software for testing
-yum install nano java-1.7.0-openjdk-headless epel-release httpd vsftpd -y
+yum install nano java-1.7.0-openjdk-headless epel-release httpd vsftpd lftp -y
 
 # 7zip to extract the test application
 yum install p7zip -y
