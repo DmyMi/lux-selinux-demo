@@ -1,0 +1,22 @@
+# Executable File
+/opt/jnode/jnode.run	--	gen_context(system_u:object_r:jnode_exec_t)
+
+# Everything that needs to be read_only for the service
+# we can move to the "config"
+/opt/jnode(/.*)?		gen_context(system_u:object_r:jnode_conf_t)
+/opt/jnode/jar(/.*)    		gen_context(system_u:object_r:jnode_conf_t)
+
+# And the configs them self
+/opt/jnode/point/.*\.cfg  	gen_context(system_u:object_r:jnode_conf_t)
+
+# The service will have permission to write files here,
+# but will no be able to not remove them
+/opt/jnode/fileechoes(/.*)?  	gen_context(system_u:object_r:jnode_cache_t)
+/opt/jnode/point(/.*)?  	gen_context(system_u:object_r:jnode_cache_t)
+
+# Here is the folder for any temporary files and folders our service generates
+/opt/jnode/(inbound|temp)(/.*)? 	gen_context(system_u:object_r:jnode_tmp_t)
+
+# And here we will store the log files
+/var/log/jnode(/.*)? 		gen_context(system_u:object_r:jnode_log_t)
+
