@@ -9,9 +9,9 @@ Vagrant.configure("2") do |config|
   # For windows users comment the line above and uncomment next line
   config.vm.box = "bento/centos-7.1"
 
-  config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.network "forwarded_port", guest: 21, host: 8081
-  config.vm.network "forwarded_port", guest: 8080, host: 8082
+  config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+  config.vm.network "forwarded_port", guest: 21, host: 8081, host_ip: "127.0.0.1"
+  config.vm.network "forwarded_port", guest: 8080, host: 8082, host_ip: "127.0.0.1"
 
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
