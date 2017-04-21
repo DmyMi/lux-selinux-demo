@@ -4,7 +4,10 @@
 ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "centos/7"
+  # For linux users uncoment next line and comment the bento/centos-7.1
+  #config.vm.box = "centos/7"
+  # For windows users comment the line above and uncomment next line
+  config.vm.box = "bento/centos-7.1"
 
   config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.network "forwarded_port", guest: 21, host: 8081
