@@ -35,3 +35,7 @@ vagrant up # start provisioning, will take 5-15 minutes
 vagrant ssh # when provisioning is successful
 ```
 
+When you issue a reboot, use the following command inside the VM:
+```bash
+mount -t vboxsf -o uid=1000,gid=1000 vagrant /vagrant
+```

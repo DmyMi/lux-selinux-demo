@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Update to the latest kernel
+yum -y install kernel-devel
+
 # Update List of Packages
 yum update -y
 
@@ -38,3 +41,13 @@ echo "done"
 
 # Extract test application
 7za x -o/opt /vagrant/jnode.7z
+
+yum install linux-headers-$(uname -r) build-essential dkms -y
+wget -c http://download.virtualbox.org/virtualbox/5.1.20/VBoxGuestAdditions_5.1.20.iso -O /opt/VBoxGuestAdditions_5.1.20.iso > /dev/null 2>&1
+mount -o loop,ro /opt/VBoxGuestAdditions_5.1.20.iso /mnt
+echo "yes" | sudo sh /mnt/VBoxLinuxAdditions.run uninstall
+echo "yes" | sudo sh /mnt/VBoxLinuxAdditions.run --nox11
+groupadd vboxusers
+usermod -a -G vboxusers $USER
+ln -sf /opt/VBoxGuestAdditions-5.1.20/lib/VBoxGuestAdditions/mount.vboxsf /sbin/mount.vboxsf
+ln -s /opt/VBoxGuestAdditions-5.1.20/lib/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions
